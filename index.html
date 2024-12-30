@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Editor</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Photo Editor</h1>
+        <div class="upload-container">
+            <input type="file" id="imageInput" accept="image/*" class="hidden">
+            <label for="imageInput" class="upload-btn">Choose Image</label>
+        </div>
+        <div class="editor-container">
+            <canvas id="canvas" class="hidden"></canvas>
+            <div class="controls">
+                <div class="ai-enhance-container">
+                    <h3>AI Enhancement</h3>
+                    <div class="ai-controls">
+                        <button class="ai-btn" data-effect="improve">🪄 Auto Improve</button>
+                        <button class="ai-btn" data-effect="recolor">🎨 Recolor</button>
+                        <button class="ai-btn" data-effect="removeBackground">✨ Remove Background</button>
+                        <button class="ai-btn" data-effect="restore">🔄 Restore Old Photo</button>
+                        <button class="ai-btn" data-effect="hdr">📸 HDR Effect</button>
+                    </div>
+                    <div id="aiProgress" class="progress-bar hidden">
+                        <div class="progress-text">Enhancing image...</div>
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <div class="themes-container">
+                    <h3>Themes</h3>
+                    <div class="theme-buttons">
+                        <button class="theme-btn" data-theme="normal">Normal</button>
+                        <button class="theme-btn" data-theme="vintage">Vintage</button>
+                        <button class="theme-btn" data-theme="noir">Noir</button>
+                        <button class="theme-btn" data-theme="summer">Summer</button>
+                        <button class="theme-btn" data-theme="dramatic">Dramatic</button>
+                    </div>
+                </div>
+                
+                <div class="resize-container">
+                    <h3>Resize Image</h3>
+                    <div class="resize-controls">
+                        <div class="dimension-group">
+                            <label>Width (px)</label>
+                            <input type="number" id="resizeWidth" min="1">
+                        </div>
+                        <div class="dimension-group">
+                            <label>Height (px)</label>
+                            <input type="number" id="resizeHeight" min="1">
+                        </div>
+                        <div class="resize-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="maintainAspectRatio" checked>
+                                Maintain Aspect Ratio
+                            </label>
+                            <button id="applyResize">Apply Resize</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>Brightness</label>
+                    <input type="range" id="brightness" min="-100" max="100" value="0">
+                </div>
+                <div class="control-group">
+                    <label>Contrast</label>
+                    <input type="range" id="contrast" min="-100" max="100" value="0">
+                </div>
+                <div class="control-group">
+                    <label>Saturation</label>
+                    <input type="range" id="saturation" min="-100" max="100" value="0">
+                </div>
+                <div class="control-group">
+                    <label>Blur</label>
+                    <input type="range" id="blur" min="0" max="10" value="0">
+                </div>
+                <div class="control-group">
+                    <label>Sepia</label>
+                    <input type="range" id="sepia" min="0" max="100" value="0">
+                </div>
+                <div class="buttons">
+                    <button id="resetBtn">Reset</button>
+                    <button id="downloadBtn" class="hidden">Download</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
